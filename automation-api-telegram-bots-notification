@@ -4,7 +4,7 @@
 //3. Select "Create a new automation"
 //4. Fill element @Automation setting 
 //(Task name, Call a Webhook, Table name (Related data), Preset(Custom),
-// Url(https://api.telegram.org/bot7991906514:AAHfjAzBCR3QjXffw-BoLye9R2qbgJnTIO4/sendMessage),HTTP Content Type(JSON)
+// Url(https://api.telegram.org/(Enter your bot token from BotFather)/sendMessage),HTTP Content Type(JSON)
 //5. For body section, fill HTTP request below (adjustment might needed during certain usage)
 
 {
