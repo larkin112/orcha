@@ -1,0 +1,22 @@
+//Automation - integrate telegram bot API to appsheet in-app activities for triggering a notification
+//1. Setup your telegram bot (tutorial -> @ https://core.telegram.org/bots/api)
+//2. Go to "Bots" main menu in appsheet editor
+//3. Select "Create a new automation"
+//4. Fill element @Automation setting 
+//(Task name, Call a Webhook, Table name (Related data), Preset(Custom),
+// Url(https://api.telegram.org/bot7991906514:AAHfjAzBCR3QjXffw-BoLye9R2qbgJnTIO4/sendMessage),HTTP Content Type(JSON)
+//5. For body section, fill HTTP request below (adjustment might needed during certain usage)
+
+{
+  "chat_id":-1002469208842,
+
+  "text":"<<CONCATENATE("Inventory Update ",text(today()))>>\n
+
+          <<CONCATENATE("Item : ",[Item (Name)])>>\n
+
+          <<CONCATENATE("PIC : ",[PIC (Name)])>>\n
+
+          <<CONCATENATE("Status : ",[LOG -  Status])>>\n",
+
+  "parse_mode":"MarkdownV2"
+}
