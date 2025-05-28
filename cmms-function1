@@ -1,0 +1,43 @@
+//This is an example of row filter condition usage to arrange a dynamic data filtering seperate in few stages from appsheet editor 
+//1. Switch to "Data" section in editor
+//2. Create new Data (sychronize your database to appsheet using available platform)
+//3. Applied few changes in "TYPE" row to adjust your data
+//4. Select + >> "Add slice to filter data"
+//5. @ Row Filter Condition Enter the sample functions below (adjustment should be applied along with your data index) 
+
+AND(  
+  IF(
+    ISNOTBLANK(
+      		INDEX(Asset_LogFilter[Tagging],1
+           	)
+    	),
+    		[Unit Tagging] = INDEX(
+      		Asset_LogFilter[Tagging],1
+    	),true
+  	),
+
+  IF(
+    ISNOTBLANK(
+      			INDEX(Asset_LogFilter[Tag Number],1)
+    		  ),
+    			[Tag Number] = INDEX(
+    			Asset_LogFilter[Tag Number],1
+    		  ),true
+  			 ),
+
+  IF(
+    ISNOTBLANK(
+      			INDEX(Asset_LogFilter[Category],1)
+    	      ),
+    			[Category] = INDEX(Asset_LogFilter[Category],1
+    		  ),true
+  ),
+
+  IF(
+    ISNOTBLANK(
+               INDEX(Asset_LogFilter[General Spec.],1)
+    		  ),
+      		   [General Spec.] = INDEX(Asset_LogFilter[General Spec.],1
+       		  ),true
+ 	)
+)
