@@ -8,7 +8,7 @@
 //5. For body section, fill HTTP request below (adjustment might needed during certain usage)
 
 {
-  "chat_id":-1002469208842,
+  "chat_id":-(Enter mentioned chat id),
 
   "text":"<<CONCATENATE("Inventory Update ",text(today()))>>\n
 
