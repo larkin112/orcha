@@ -1,0 +1,175 @@
+# ORCHA'S AppSheet Productivity Software Architecture Diagram
+
+This notes illustrates Orhca's architecture diagram for an ERP solution built using the AppSheet platform, specifically highlighting modules such as CRM, HRM, SCM, and Project Management.
+
+---
+
+## 1. User Layer
+
+- **End Users**
+  - Web Browser (Desktop)
+  - Mobile App (iOS/Android)
+  - User Groups/Roles (Sales, HR, Supply Chain, Project Managers, Executives)
+
+---
+
+## 2. AppSheet Application Layer
+
+- **AppSheet App**
+  - **Modular UX Interfaces:**  
+    - CRM Dashboard  
+    - HRM Dashboard  
+    - SCM Dashboard  
+    - Project Management Dashboard
+  - **App Logic:**  
+    - Actions (e.g., Create Lead, Approve Leave, Update Inventory, Log Task)  
+    - Workflows (e.g., Send Notification, Assign Task, Trigger Approval)
+  - **Security Rules:**  
+    - Role-based access per module (e.g., HR access HRM only)
+
+---
+
+## 3. Feature Modules
+
+### A. CRM (Customer Relationship Management)
+- **Features**
+  - Lead & Opportunity Management
+  - Customer Database
+  - Interaction & Activity Log
+  - Sales Pipeline Visualization
+- **Data Entities**
+  - Leads, Customers, Contacts, Deals, Notes, Tasks
+
+### B. HRM (Human Resource Management)
+- **Features**
+  - Employee Directory
+  - Leave & Attendance Management
+  - Performance Tracking
+  - Payroll Integration
+- **Data Entities**
+  - Employees, Leave Requests, Attendance Logs, Appraisals
+
+### C. SCM (Supply Chain Management)
+- **Features**
+  - Inventory Management
+  - Supplier Management
+  - Purchase Orders
+  - Delivery & Logistics Tracking
+  - Stock level Forecasting 
+- **Data Entities**
+  - Inventory Items (Stock level), Suppliers, Orders, Shipments
+
+### D. Project Management
+- **Features**
+  - Project & Task Tracking
+  - Gantt/Calendar Views
+  - Resource Allocation
+  - Time Tracking & Reporting
+  - S-Curve Visualization
+- **Data Entities**
+  - Projects, Tasks, Milestones, Resources, Timesheets
+
+---
+
+## 4. Data Layer
+
+- **Data Sources**
+  - Google Sheets / Excel / SQL Database (modular tables per ERP module)
+  - Cloud Storage (Google Drive, OneDrive)
+  - External APIs (e.g., Payroll, Email, Power BI, Calendar, Accounting)
+
+---
+
+## 5. Integration & Automation Layer
+
+- **AppSheet Bots & Workflows**
+  - Module-specific triggers (e.g., New Supply Entry → Notify Supply Chain Manager, Task Update → Notify Project Manager)
+  - Automated data sync across modules (e.g., Employee record update reflects in Project Assignments)
+  - Scheduled reports (e.g., Daily Sales Report, Weekly Inventory Check)
+
+- **Webhooks/External Integrations**
+  - REST API/Webhooks to third-party ERP connectors
+  - Integration with Slack, Email, Calendar, Accounting, or Payroll software
+
+---
+
+## 6. Security & Authentication Layer
+
+- **Authentication**
+  - AppSheet User Authentication (Google, Microsoft, SSO, Email)
+  - Role-based Access Control (per ERP module, data row, or feature)
+- **Data Security**
+  - Data partitioning by department, team, or module
+  - Row-level & column-level security
+  **Security Automation**
+  - Appsheet Log Analyzer to external API (Detect suspicious log)
+  - Dashboard for DevOps to terminate suspicious section through each layer
+
+## 7. Deployment Layer
+
+- **Deployment**
+  - AppSheet Cloud (managed by Google, no on-premise deployment)
+  - App distribution via web link, iOS/Android app
+
+---
+
+## Architecture Diagram (ASCII Art)
+
+```
++------------------------------+
+|         End Users            |
+| (Sales, HR, SCM, PM, Execs)  |
++------------------------------+
+              |
+              v
++------------------------------------+
+|    AppSheet ERP Application        |
+| +------------------------------+   |
+| | CRM Module                   |   |
+| | HRM Module                   |   |
+| | SCM Module                   |   |
+| | Project Management Module    |   |
+| +------------------------------+   |
+|  (UX, Logic, Security, Workflows)  |
++------------------------------------+
+              |
+              v
++-------------------------------+
+|        Data Sources           |
+| (Sheets, SQL, APIs, Storage)  |
++-------------------------------+
+              |
+              v
++---------------------------------------+
+| Integrations & Automations            |
+| (Bots, Webhooks, Third-Party APIs)    |
++---------------------------------------+
+              |
+              v
++-----------------------------+
+|  External Services          |
+| (Email, Payroll, Calendar)  |
++-----------------------------+
+```
+
+---
+
+## How to Use
+
+1. **Customize Modules:** Adapt the modules (CRM, HRM, SCM, PM) based on your ERP requirements.
+2. **Map Data Entities:** Ensure each feature references its underlying data tables or sources.
+3. **Define Workflows:** Draw lines or annotate triggers and automations between modules/integrations.
+4. **Enforce Security:** Clearly indicate role-based access and data partitioning.
+5. **Visualize Integrations:** Draw or list all key integrations with external systems.
+
+---
+
+## Notes
+
+- Each ERP module may be a separate AppSheet app or a unified app with role-based views.
+- Data is centralized or partitioned by module, depending on business needs.
+- AppSheet Bots/Workflows orchestrate cross-module automation.
+- Integrate with external services as needed for a complete ERP solution.
+
+---
+
